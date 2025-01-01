@@ -10,8 +10,11 @@ const app: Application = express();
 // Middleware for logging
 app.use(morgan('dev')); // 'dev' outputs concise colored logs
 
-// Enable CORS for all origins
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Allow only this origin
+  }),
+);
 
 // Parsers
 app.use(express.json());
