@@ -15,7 +15,13 @@ app.use(
     origin: 'http://localhost:3000', // Allow only this origin
   }),
 );
-
+app.use((req, res, next) => {
+  res.setHeader(
+    'Permissions-Policy',
+    'autoplay=(self), fullscreen=(self), picture-in-picture=*',
+  );
+  next();
+});
 // Parsers
 app.use(express.json());
 
