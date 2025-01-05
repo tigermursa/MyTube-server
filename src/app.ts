@@ -12,7 +12,7 @@ app.use(morgan('dev')); // 'dev' outputs concise colored logs
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Allow only this origin
+    origin: 'http://localhost:3000', // Allowing only this origin
   }),
 );
 app.use((req, res, next) => {
