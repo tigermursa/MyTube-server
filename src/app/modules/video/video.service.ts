@@ -38,16 +38,17 @@ export const updateVideo = async (
   });
 };
 
-export const toggleVideoDeleteStatus = async (
-  videoId: string,
-): Promise<IVideo | null> => {
-  // Find the video and toggle the 'isDeleted' status
+export const toggleVideoDeleteStatus = async (videoId: string) => {
+  // Find the video by ID
   const video = await Video.findById(videoId);
 
-  if (video) {
-    video.isDeleted = !video.isDeleted; // Toggle isDeleted value
-    await video.save(); // Save the updated video
+  if (!video) {
+    throw new Error('Video not found');
   }
+
+  // Toggle the `isDeleted` status and save
+  video.isDeleted = !video.isDeleted;
+  await video.save();
 
   return video;
 };

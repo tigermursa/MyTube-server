@@ -31,7 +31,6 @@ router.patch(
   '/video/:videoId/toggle-delete',
   toggleVideoDeleteStatusController,
 );
-
 // Route to get deleted videos
 router.get('/videos/deleted', getDeletedVideoController);
 

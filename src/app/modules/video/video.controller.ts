@@ -149,24 +149,26 @@ export const toggleVideoDeleteStatusController = async (
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<any> => {
+): Promise<void> => {
   try {
-    const { _id } = req.params;
-    const user = await toggleVideoDeleteStatus(_id);
+    const { videoId } = req.params;
+    const video = await toggleVideoDeleteStatus(videoId);
 
-    if (!user) {
-      return res.status(404).json({
+    if (!video) {
+      res.status(404).json({
         success: false,
-        message: 'User not found',
+        message: 'Video not found',
       });
+      return; // Exit after sending the response
     }
 
     res.status(200).json({
       success: true,
-      message: `User ${user.isDeleted ? 'marked as deleted' : 'restored'}`,
+      message: `Video ${video.isDeleted ? 'marked as deleted' : 'restored'}`,
+      data: video,
     });
   } catch (error) {
-    next(error);
+    next(error); // Pass error to the global error handler
   }
 };
 
