@@ -151,8 +151,8 @@ export const toggleVideoDeleteStatusController = async (
   next: NextFunction,
 ): Promise<any> => {
   try {
-    const { uid } = req.params;
-    const user = await toggleVideoDeleteStatus(uid);
+    const { _id } = req.params;
+    const user = await toggleVideoDeleteStatus(_id);
 
     if (!user) {
       return res.status(404).json({
