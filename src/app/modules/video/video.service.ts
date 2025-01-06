@@ -17,7 +17,7 @@ export const createVideo = async (
 
 // Get all videos
 export const getAllVideos = async (): Promise<IVideo[]> => {
-  return await Video.find({ isDeleted: false }); // Only get videos where isDeleted is false
+  return await Video.find({ isDeleted: false });
 };
 
 export const getVideoById = async (videoId: string): Promise<IVideo | null> => {
