@@ -64,7 +64,7 @@ export const getAllVideosController = async (
       data: videos,
     });
   } catch (error: any) {
-    next(error); // Pass errors to Express error handler
+    next(error);
   }
 };
 
